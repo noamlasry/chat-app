@@ -1,36 +1,38 @@
 
+// Listen on port 4000
+// I'm using 'nodemon' to see the change immediately and avoid refershing the page any time
+var clientSocket = io.connect('http://localhost:4000');
 
-var socket = io.connect('http://localhost:4000');
 
-
+// attach the div element to js
 var message = document.getElementById('message');
-var handle = document.getElementById('handle');
-var btn = document.getElementById('send');
-var output = document.getElementById('output');
-var feedback = document.getElementById('feedback');
+var handleBy = document.getElementById('handle-by');
+var sedButton = document.getElementById('send');
+var messageContent = document.getElementById('message-content');
+var broadcast = document.getElementById('broadcast');
 
 
-btn.addEventListener('click',function(){
-    socket.emit('chat', {
+sedButton.addEventListener('click',function(){
+    clientSocket.emit('chat', {
         message: message.value,
-        handle: handle.value
+        handleBy: handleBy.value
     })
 });
 
 
 message.addEventListener('keypress',function(){
-    socket.emit('typing',handle.value);
+    clientSocket.emit('typing',handleBy.value);
 });
 
 //Listen for event
 
-socket.on('chat', function(data){
-    feedback.innerHTML = "";
-    output.innerHTML += '<p><strong>' + data.handle + ':</strong>' + data.message + '</p>'
+clientSocket.on('chat', function(data){
+    broadcast.innerHTML = "";
+    messageContent.innerHTML += '<p>' + data.handleBy + ':' + data.message + '</p>'
 });
 
 
-socket.on('typing',function(data){
-    feedback.innerHTML = '<p><em>' + data + ' typing.... </em></p>'; 
+clientSocket.on('typing',function(data){
+    broadcast.innerHTML = '<p>' + data + ' typing.... </p>'; 
 });
 
