@@ -11,22 +11,23 @@ var sedButton = document.getElementById('send');
 var messageContent = document.getElementById('message-content');
 var broadcast = document.getElementById('broadcast');
 
-
+// send message to server
 sedButton.addEventListener('click',function(){
-    clientSocket.emit('chat', {
+    clientSocket.emit('client', {
         message: message.value,
         handleBy: handleBy.value
-    })
+    });
+    message.value = "";
+
 });
 
-
+// send client action on keyboard to server
 message.addEventListener('keypress',function(){
     clientSocket.emit('typing',handleBy.value);
 });
 
 //Listen for event
-
-clientSocket.on('chat', function(data){
+clientSocket.on('client', function(data){
     broadcast.innerHTML = "";
     messageContent.innerHTML += '<p>' + data.handleBy + ':' + data.message + '</p>'
 });

@@ -1,28 +1,21 @@
+
+// using 'express for robust connection'
 var express = require('express');
-var socket = require('socket.io')
-
-var app = express();
-var server = app.listen(4000, function(){
-    console.log('listening')
-});
-
-
-app.use(express.static('public'));
+var serverSocket = require('socket.io')
+var mainApp = express();
+var mainServer = mainApp.listen(4000, function(){console.log('listening')});
+mainApp.use(express.static('public'));
 
 
 
-var io = socket(server);
+var io = serverSocket(mainServer);
 
-io.on('connection', function(socket){
-    console.log("made socket connection",socket.id);
-
-
-    socket.on('chat',function(data){
-        io.sockets.emit('chat',data);
-    });
-
-    socket.on('typing',function(data){
-        socket.broadcast.emit('typing',data)
-    });
+// here I'm lestning for messages from the client
+io.on('connection', function(serverSocket){
+    console.log("connection establish",serverSocket.id);
+    // listen for message content to come
+    serverSocket.on('client',function(data){io.sockets.emit('client',data);});
+    // broadcast client action
+    serverSocket.on('typing',function(data){serverSocket.broadcast.emit('typing',data)});
 
 });

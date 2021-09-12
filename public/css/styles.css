@@ -3,20 +3,20 @@ body{
 }
 
 h2{
-    font-size: 18px;
+    font-size: 400px;
     padding: 10px 20px;
-    color: #575ed8;
+    color: #cbcceb;
 }
 
-#mario-chat{
-    max-width: 600px;
+#chat{
+    max-width: 500px;
     margin: 30px auto;
     border: 1px solid #ddd;
     box-shadow: 1px 3px 5px rgba(0,0,0,0.05);
-    border-radius: 2px;
+    border-radius: 6px;
 }
 
-#chat-window{
+#chat-block{
     height: 400px;
     overflow: auto;
     background: #f9f9f9;
@@ -59,11 +59,11 @@ input{
 }
 
 button{
-    background: #575ed8;
-    color: #fff;
+    background: #8eec9e;
+    color: rgb(22, 20, 20);
     font-size: 18px;
     border: 0;
     padding: 12px 0;
     width: 100%;
-    border-radius: 0 0 2px 2px;
+    border-radius: 4px 4px 4px 4px;
 }
