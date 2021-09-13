@@ -1,12 +1,12 @@
 body{
-    font-family: 'Nunito';
+    font-family: 'Times New Roman", Times, serif';
+    text-shadow: #ddd;
+
+}
+h3{
+    color: aqua;
 }
 
-h2{
-    font-size: 400px;
-    padding: 10px 20px;
-    color: #cbcceb;
-}
 
 #chat{
     max-width: 500px;
@@ -27,16 +27,6 @@ h2{
     margin: 0 20px;
     border-bottom: 1px solid #e9e9e9;
     color: #555;
-}
-
-#feedback p{
-    color: #aaa;
-    padding: 14px 0px;
-    margin: 0 20px;
-}
-
-#output strong{
-    color: #575ed8;
 }
 
 label{
@@ -66,4 +56,7 @@ button{
     padding: 12px 0;
     width: 100%;
     border-radius: 4px 4px 4px 4px;
+}
+#output strong{
+    color: rgb(87, 57, 223);
 }

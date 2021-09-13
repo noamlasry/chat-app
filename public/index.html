@@ -7,17 +7,19 @@
         <link  href="css/styles.css" rel="stylesheet"/>
     </head>
     <body>
-
+        
         <div id="chat">
-            <input id="handle-by" type="text" placeholder="From"/>
+            <div id="client-name">Contact Name: </div>
+            <input id="sender" type="text" placeholder="From"/>
+            <input id="recipient" type="text" placeholder="To"/>
             <input id="message" type="text" placeholder="Message"/>
             <button id="send">Send</button>
             <div id="chat-block">
                 <div id="message-content"></div>
-                <div id="broadcast"></div>
+                <div id="typing"></div>
             </div>
         </div>
         <script src="/client.js"></script>
-        
+
     </body>
 </html>
