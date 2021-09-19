@@ -1,1 +1,2 @@
-# chat-app
+run the app:
+npm serve
